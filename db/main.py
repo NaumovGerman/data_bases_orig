@@ -18,7 +18,6 @@ def show(self, x, sql_request: str):
     with x.cursor() as cursor:
         cursor.execute(sql_request)
         rows = cursor.fetchall()
-
         # Определение заголовков
         headers = [desc[0] for desc in cursor.description]
         # Установка заголовков в Treeview
