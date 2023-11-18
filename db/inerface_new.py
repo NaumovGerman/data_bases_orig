@@ -73,6 +73,9 @@ class App(ctk.CTk):
         self.contracts4_outlier_state_frame = Frame(self)
         self.init_contracts4_outlier_state_frame()
 
+        self.contracts5_outlier_state_frame = Frame(self)
+        self.init_contracts5_outlier_state_frame()
+
         # Фрейм - "Платежи"
         self.payments_state_frame = Frame(self)
         self.init_payments_state_frame()
@@ -84,8 +87,8 @@ class App(ctk.CTk):
         self.payment3_outlier_state_frame = Frame(self)
         self.init_payment3_outlier_state_frame()
 
-        self.payment6_outlier_state_frame = Frame(self)
-        self.init_payment6_outlier_state_frame()
+        self.payment5_outlier_state_frame = Frame(self)
+        self.init_payment5_outlier_state_frame()
 
         # Фрейм для четвертого состояния (результат show)
         self.result_state_frame = Frame(self)
@@ -162,13 +165,15 @@ class App(ctk.CTk):
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_credit2 = Entry(self.credit2_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_credit2 = Entry(
+            self.credit2_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_credit2.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_credit2 = ctk.CTkButton(self.credit2_outlier_state_frame, text="Подтвердить",
-                                                    command=lambda: self.confirm_temp(fn.credits_command_second, self.temp_entry_credit2))
+                                                    command=lambda: self.confirm_temp(fn.credits_command_second,
+                                                                                      self.temp_entry_credit2))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_credit2.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -183,13 +188,15 @@ class App(ctk.CTk):
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_credit5 = Entry(self.credit5_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_credit5 = Entry(
+            self.credit5_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_credit5.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_credit5 = ctk.CTkButton(self.credit5_outlier_state_frame, text="Подтвердить",
-                                                    command=lambda: self.confirm_temp(fn.credits_command_fifth, self.temp_entry_credit5))
+                                                    command=lambda: self.confirm_temp(fn.credits_command_fifth,
+                                                                                      self.temp_entry_credit5))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_credit5.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -204,13 +211,15 @@ class App(ctk.CTk):
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_credit6 = Entry(self.credit6_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_credit6 = Entry(
+            self.credit6_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_credit6.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_credit6 = ctk.CTkButton(self.credit6_outlier_state_frame, text="Подтвердить",
-                                                    command=lambda: self.confirm_temp(fn.credits_command_sixth, self.temp_entry_credit6))
+                                                    command=lambda: self.confirm_temp(fn.credits_command_sixth,
+                                                                                      self.temp_entry_credit6))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_credit6.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -261,13 +270,15 @@ class App(ctk.CTk):
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_client3 = Entry(self.client3_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_client3 = Entry(
+            self.client3_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_client3.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_client3 = ctk.CTkButton(self.client3_outlier_state_frame, text="Подтвердить",
-                                                    command=lambda: self.confirm_temp(fn.clients_command_third, self.temp_entry_client3))
+                                                    command=lambda: self.confirm_temp(fn.clients_command_third,
+                                                                                      self.temp_entry_client3))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_client3.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -278,17 +289,20 @@ class App(ctk.CTk):
 
     def init_client6_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.client6_outlier_state_frame, text='Введите клиента в формате "Имя Фамилия". Например Emily Brown')
+        label = ctk.CTkLabel(self.client6_outlier_state_frame,
+                             text='Введите клиента в формате "Имя Фамилия". Например Emily Brown')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_client6 = Entry(self.client6_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_client6 = Entry(
+            self.client6_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_client6.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_client6 = ctk.CTkButton(self.client6_outlier_state_frame, text="Подтвердить",
-                                                    command=lambda: self.confirm_temp(fn.clients_command_sixth, self.temp_entry_client6))
+                                                    command=lambda: self.confirm_temp(fn.clients_command_sixth,
+                                                                                      self.temp_entry_client6))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_client6.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -309,7 +323,8 @@ class App(ctk.CTk):
         self.employee2_button.grid(row=1, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Сотрудник 3"
-        self.employee3_button = ctk.CTkButton(self.employee_state_frame, text="Закрепленные клиенты у каждого сотрудника",
+        self.employee3_button = ctk.CTkButton(self.employee_state_frame,
+                                              text="Закрепленные клиенты у каждого сотрудника",
                                               command=lambda: self.show_result_state(fn.employees_command_third))
         self.employee3_button.grid(row=2, column=0, padx=300, pady=25, sticky="nsew")
 
@@ -330,17 +345,20 @@ class App(ctk.CTk):
 
     def init_employee4_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.employee4_outlier_state_frame, text='Введите должность сотрудника. Например: Loan Officer')
+        label = ctk.CTkLabel(self.employee4_outlier_state_frame,
+                             text='Введите должность сотрудника. Например: Loan Officer')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_employee4 = Entry(self.employee4_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_employee4 = Entry(
+            self.employee4_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_employee4.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_employee4 = ctk.CTkButton(self.employee4_outlier_state_frame, text="Подтвердить",
-                                                      command=lambda: self.confirm_temp(fn.employees_command_fourth, self.temp_entry_employee4))
+                                                      command=lambda: self.confirm_temp(fn.employees_command_fourth,
+                                                                                        self.temp_entry_employee4))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_employee4.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -355,13 +373,15 @@ class App(ctk.CTk):
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_employee5 = Entry(self.employee5_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_employee5 = Entry(
+            self.employee5_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_employee5.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_employee5 = ctk.CTkButton(self.employee5_outlier_state_frame, text="Подтвердить",
-                                                      command=lambda: self.confirm_temp(fn.employees_command_fifth, self.temp_entry_employee5))
+                                                      command=lambda: self.confirm_temp(fn.employees_command_fifth,
+                                                                                        self.temp_entry_employee5))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_employee5.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -372,43 +392,55 @@ class App(ctk.CTk):
 
     def init_contracts_state_frame(self):
         # Кнопка "Договор 1"
-        self.contracts1_button = ctk.CTkButton(self.contracts_state_frame, text="Информация о всех заключённых договорах",
+        self.contracts1_button = ctk.CTkButton(self.contracts_state_frame,
+                                               text="Информация о всех заключённых договорах",
                                                command=lambda: self.show_result_state(fn.credit_contracts_first))
         self.contracts1_button.grid(row=0, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Договор 2"
-        self.contracts2_button = ctk.CTkButton(self.contracts_state_frame, text="ФИ сотрудника и клиента по идентификатору договора",
+        self.contracts2_button = ctk.CTkButton(self.contracts_state_frame,
+                                               text="ФИ сотрудника и клиента по идентификатору договора",
                                                command=lambda: self.show_result_state(fn.credit_contracts_second))
         self.contracts2_button.grid(row=1, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Договор 3"
-        self.contracts3_button = ctk.CTkButton(self.contracts_state_frame, text="Договоры, заключённые на сумму меньше запрашиваемой",
+        self.contracts3_button = ctk.CTkButton(self.contracts_state_frame,
+                                               text="Договоры, заключённые на сумму меньше запрашиваемой",
                                                command=lambda: self.show_result_state(fn.credits_command_third))
         self.contracts3_button.grid(row=2, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Договор 4"
-        self.contracts4_button = ctk.CTkButton(self.contracts_state_frame, text="Договоры, заключенные после определённой даты",
+        self.contracts4_button = ctk.CTkButton(self.contracts_state_frame,
+                                               text="Договоры, заключенные после определённой даты",
                                                command=self.show_contracts4_outlier_state)
         self.contracts4_button.grid(row=3, column=0, padx=300, pady=25, sticky="nsew")
+
+        # Кнопка "Договор 5"
+        self.contrasts5_button = ctk.CTkButton(self.contracts_state_frame, text="Заключить договор",
+                                               command=self.show_contracts5_outlier_state)
+        self.contrasts5_button.grid(row=4, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Назад"
         self.back_button_contracts = ctk.CTkButton(self.contracts_state_frame, text="Назад",
                                                    command=self.show_menu, fg_color="grey")
-        self.back_button_contracts.grid(row=4, column=0, padx=300, pady=25, sticky="nsew")
+        self.back_button_contracts.grid(row=5, column=0, padx=300, pady=25, sticky="nsew")
 
     def init_contracts4_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.contracts4_outlier_state_frame, text='Введите дату в формате YYYY-MM-DD. Например 2023-10-03')
+        label = ctk.CTkLabel(self.contracts4_outlier_state_frame,
+                             text='Введите дату в формате YYYY-MM-DD. Например 2023-10-03')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_contracts4 = Entry(self.contracts4_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
+        self.temp_entry_contracts4 = Entry(
+            self.contracts4_outlier_state_frame)  # этот объект - поле для ввода, а не параметр,
         # который мы ввели
         self.temp_entry_contracts4.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
         self.confirm_button_contracts4 = ctk.CTkButton(self.contracts4_outlier_state_frame, text="Подтвердить",
-                                                       command=lambda: self.confirm_temp(fn.credit_contracts_fourth, self.temp_entry_contracts4))
+                                                       command=lambda: self.confirm_temp(fn.credit_contracts_fourth,
+                                                                                         self.temp_entry_contracts4))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_contracts4.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -417,6 +449,53 @@ class App(ctk.CTk):
                                                     command=self.show_contracts_state, fg_color="grey")
         self.back_button_contr_out4.grid(row=3, column=1, padx=300, pady=0, sticky="nsew")
 
+    def init_contracts5_outlier_state_frame(self):
+        # Указание, что нужно вводить пользователю
+        label = ctk.CTkLabel(self.contracts5_outlier_state_frame, text='Имя и фамилия клиента. Например: John Doe')
+        label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
+        # Элементы для ввода
+        self.temp_entry_contracts5_1 = Entry(self.contracts5_outlier_state_frame)
+        self.temp_entry_contracts5_1.grid(row=1, column=1, padx=50, pady=25, sticky="nsew")
+        # Кнопка "Подтвердить"
+        self.confirm_button_contracts5_1 = ctk.CTkButton(self.contracts5_outlier_state_frame, text="Подтвердить",
+                                                         command=lambda: self.get_id(fn.receive_client_id, self.temp_entry_contracts5_1))
+        # отправляем в confirm указатель на функцию, НЕ СТРОКУ
+        self.confirm_button_contracts5_1.grid(row=1, column=2, padx=10, pady=25, sticky="nsew")
+
+
+        ##################
+        label = ctk.CTkLabel(self.contracts5_outlier_state_frame, text='Имя и фамилия сотрудника. Например: Rebecca Lee')
+        label.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
+        # Элементы для ввода
+        self.temp_entry_contracts5_2 = Entry(self.contracts5_outlier_state_frame)
+        self.temp_entry_contracts5_2.grid(row=3, column=1, padx=50, pady=25, sticky="nsew")
+
+        # Кнопка "Подтвердить"
+        self.confirm_button_contracts5_2 = ctk.CTkButton(self.contracts5_outlier_state_frame, text="Подтвердить",
+                                                         command=lambda: self.get_id(fn.receive_emp_id, self.temp_entry_contracts5_2))
+        # отправляем в confirm указатель на функцию, НЕ СТРОКУ
+        self.confirm_button_contracts5_2.grid(row=3, column=2, padx=10, pady=25, sticky="nsew")
+
+        ##################
+        label = ctk.CTkLabel(self.contracts5_outlier_state_frame, text='Сумма,процент,срок в месяцах,вид кредита. Например: 20000 11 70 3')
+        label.grid(row=4, column=1, padx=300, pady=25, sticky="nsew")
+        # Элементы для ввода
+        self.temp_entry_contracts5_3 = Entry(self.contracts5_outlier_state_frame)
+        self.temp_entry_contracts5_3.grid(row=5, column=1, padx=50, pady=25, sticky="nsew")
+
+        # Кнопка "Подтвердить"
+        self.confirm_button_contracts5_3 = ctk.CTkButton(self.contracts5_outlier_state_frame, text="Подтвердить",
+                                                         command=lambda: self.create_contract(self.temp_entry_contracts5_3,
+                                                                                              self.find_id(fn.receive_client_id(self.temp_entry_contracts5_1.get().strip())),
+                                                                                              self.find_id(fn.receive_emp_id(self.temp_entry_contracts5_2.get().strip()))))
+        # отправляем в confirm указатель на функцию, НЕ СТРОКУ
+        self.confirm_button_contracts5_3.grid(row=5, column=2, padx=10, pady=25, sticky="nsew")
+
+        # Кнопка "Назад"
+        self.back_button_contr_out5 = ctk.CTkButton(self.contracts5_outlier_state_frame, text="Назад",
+                                                    command=self.show_contracts_state, fg_color="grey")
+        self.back_button_contr_out5.grid(row=6, column=1, padx=300, pady=0, sticky="nsew")
+
     def init_payments_state_frame(self):
         # Кнопка "Платеж 1"
         self.payment1_button = ctk.CTkButton(self.payments_state_frame, text="Все внесённые платежи",
@@ -424,7 +503,8 @@ class App(ctk.CTk):
         self.payment1_button.grid(row=0, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Платеж 2"
-        self.payment2_button = ctk.CTkButton(self.payments_state_frame, text="Сумма платежей, внесённых после заданной даты",
+        self.payment2_button = ctk.CTkButton(self.payments_state_frame,
+                                             text="Сумма платежей, внесённых после заданной даты",
                                              command=self.show_payment2_outlier_state)
         self.payment2_button.grid(row=1, column=0, padx=300, pady=25, sticky="nsew")
 
@@ -439,11 +519,11 @@ class App(ctk.CTk):
                                               command=lambda: self.show_result_state(fn.payments_command_fourth))
         self.payments4_button.grid(row=3, column=0, padx=300, pady=25, sticky="nsew")
 
-        # Кнопка "Платеж 6"
-        self.payments6_button = ctk.CTkButton(self.payments_state_frame,
+        # Кнопка "Платеж 5"
+        self.payments5_button = ctk.CTkButton(self.payments_state_frame,
                                               text="Сумма платежей заданного клиента по всем его кредитам",
-                                              command=self.show_payment6_outlier_state)
-        self.payments6_button.grid(row=4, column=0, padx=300, pady=25, sticky="nsew")
+                                              command=self.show_payment5_outlier_state)
+        self.payments5_button.grid(row=4, column=0, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Назад"
         self.back_button_payments = ctk.CTkButton(self.payments_state_frame, text="Назад",
@@ -452,7 +532,8 @@ class App(ctk.CTk):
 
     def init_payment2_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.payment2_outlier_state_frame, text='Введите дату формате YYYY-MM-DD. Например: 2023-11-08')
+        label = ctk.CTkLabel(self.payment2_outlier_state_frame,
+                             text='Введите дату формате YYYY-MM-DD. Например: 2023-11-08')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
@@ -463,7 +544,8 @@ class App(ctk.CTk):
 
         # Кнопка "Подтвердить"
         self.confirm_button_payment2 = ctk.CTkButton(self.payment2_outlier_state_frame, text="Подтвердить",
-                                                     command=lambda: self.confirm_temp(fn.payments_command_second, self.temp_entry_payment2))
+                                                     command=lambda: self.confirm_temp(fn.payments_command_second,
+                                                                                       self.temp_entry_payment2))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_payment2.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -474,7 +556,8 @@ class App(ctk.CTk):
 
     def init_payment3_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.payment3_outlier_state_frame, text='Введите минимальную сумму платежа. Например: 1200')
+        label = ctk.CTkLabel(self.payment3_outlier_state_frame,
+                             text='Введите минимальную сумму платежа. Например: 1200')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
@@ -485,7 +568,8 @@ class App(ctk.CTk):
 
         # Кнопка "Подтвердить"
         self.confirm_button_payment3 = ctk.CTkButton(self.payment3_outlier_state_frame, text="Подтвердить",
-                                                     command=lambda: self.confirm_temp(fn.payments_command_third, self.temp_entry_payment3))
+                                                     command=lambda: self.confirm_temp(fn.payments_command_third,
+                                                                                       self.temp_entry_payment3))
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
         self.confirm_button_payment3.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
@@ -494,28 +578,28 @@ class App(ctk.CTk):
                                                       command=self.show_payments_state, fg_color="grey")
         self.back_button_payment_out3.grid(row=3, column=1, padx=300, pady=0, sticky="nsew")
 
-    def init_payment6_outlier_state_frame(self):
+    def init_payment5_outlier_state_frame(self):
         # Указание, что нужно вводить пользователю
-        label = ctk.CTkLabel(self.payment6_outlier_state_frame, text='Введите клиента в формате "Имя Фамилия". Например: Emily Brown')
+        label = ctk.CTkLabel(self.payment5_outlier_state_frame,
+                             text='Введите клиента в формате "Имя Фамилия". Например: Emily Brown')
         label.grid(row=0, column=1, padx=300, pady=25, sticky="nsew")
 
         # Элементы для ввода
-        self.temp_entry_payment6 = Entry(
-            self.payment6_outlier_state_frame)  # этот объект - поле для ввода, а не параметр
+        self.temp_entry_payment5 = Entry(self.payment5_outlier_state_frame)  # этот объект - поле для ввода, а не параметр
         # который мы ввели
-        self.temp_entry_payment6.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
+        self.temp_entry_payment5.grid(row=1, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Подтвердить"
-        self.confirm_button_payment6 = ctk.CTkButton(self.payment6_outlier_state_frame, text="Подтвердить",
-                                                     command=lambda: self.confirm_temp(fn.payments_command_sixth, self.temp_entry_payment6))
+        self.confirm_button_payment5 = ctk.CTkButton(self.payment5_outlier_state_frame, text="Подтвердить",
+                                                     command=lambda: self.confirm_temp(fn.payments_command_fifth, self.temp_entry_payment5))
 
         # отправляем в confirm указатель на функцию, НЕ СТРОКУ
-        self.confirm_button_payment6.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
+        self.confirm_button_payment5.grid(row=2, column=1, padx=300, pady=25, sticky="nsew")
 
         # Кнопка "Назад"
-        self.back_button_payment_out6 = ctk.CTkButton(self.payment6_outlier_state_frame, text="Назад",
+        self.back_button_payment_out5 = ctk.CTkButton(self.payment5_outlier_state_frame, text="Назад",
                                                       command=self.show_payments_state, fg_color="grey")
-        self.back_button_payment_out6.grid(row=3, column=1, padx=300, pady=0, sticky="nsew")
+        self.back_button_payment_out5.grid(row=3, column=1, padx=300, pady=0, sticky="nsew")
 
     def init_result_state_frame(self):
         # Treeview для отображения данных в виде таблицы
@@ -561,11 +645,12 @@ class App(ctk.CTk):
         #
         self.contracts_state_frame.grid_forget()
         self.contracts4_outlier_state_frame.grid_forget()
+        self.contracts5_outlier_state_frame.grid_forget()
         #
         self.payments_state_frame.grid_forget()
         self.payment2_outlier_state_frame.grid_forget()
         self.payment3_outlier_state_frame.grid_forget()
-        self.payment6_outlier_state_frame.grid_forget()
+        self.payment5_outlier_state_frame.grid_forget()
         #
         self.result_state_frame.grid_forget()
 
@@ -579,15 +664,18 @@ class App(ctk.CTk):
 
     def show_credit2_outlier_state(self):
         self.hide_all_states()
-        self.credit2_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.credit2_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                              sticky="nsew")
 
     def show_credit5_outlier_state(self):
         self.hide_all_states()
-        self.credit5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.credit5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                              sticky="nsew")
 
     def show_credit6_outlier_state(self):
         self.hide_all_states()
-        self.credit6_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.credit6_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                              sticky="nsew")
 
     def show_client_state(self):
         self.hide_all_states()
@@ -595,11 +683,13 @@ class App(ctk.CTk):
 
     def show_client3_outlier_state(self):
         self.hide_all_states()
-        self.client3_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.client3_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                              sticky="nsew")
 
     def show_client6_outlier_state(self):
         self.hide_all_states()
-        self.client6_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.client6_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                              sticky="nsew")
 
     def show_employee_state(self):
         self.hide_all_states()
@@ -607,23 +697,31 @@ class App(ctk.CTk):
 
     def show_employee4_outlier_state(self):
         self.hide_all_states()
-        self.employee4_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.employee4_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                                sticky="nsew")
 
     def show_employee5_outlier_state(self):
         self.hide_all_states()
-        self.employee5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.employee5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                                sticky="nsew")
 
     def show_contracts_state(self):
         self.hide_all_states()
-        self.contracts_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.contracts_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 4.25, pady=220, sticky="nsew")
 
     def show_contracts4_outlier_state(self):
         self.hide_all_states()
-        self.contracts4_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.contracts4_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+                                                 sticky="nsew")
+
+    def show_contracts5_outlier_state(self):
+        self.hide_all_states()
+        self.contracts5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 4.25, pady=220,
+                                                 sticky="nsew")
 
     def show_payments_state(self):
         self.hide_all_states()
-        self.payments_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220, sticky="nsew")
+        self.payments_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 4.25, pady=220, sticky="nsew")
 
     def show_payment2_outlier_state(self):
         self.hide_all_states()
@@ -635,10 +733,40 @@ class App(ctk.CTk):
         self.payment3_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
                                                sticky="nsew")
 
-    def show_payment6_outlier_state(self):
+    def show_payment5_outlier_state(self):
         self.hide_all_states()
-        self.payment6_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
+        self.payment5_outlier_state_frame.grid(row=0, column=0, padx=self.winfo_screenwidth() / 3.7, pady=220,
                                                sticky="nsew")
+
+    def get_id(self, func, to_save):
+        # фигня какая то, мб поставить заглушку
+        temp = to_save.get().strip()
+        # print("get_client_id", to_save.get().strip())
+        if not temp:
+            return
+        self.find_id(func(temp))
+
+    def create_contract(self, to_save, client_id, emp_id):
+        temp = to_save.get().strip().split(' ')
+        if not temp:
+            return
+        self.hide_all_states()
+        with x.cursor() as cursor:
+            num_rows = int(cursor.execute(fn.credit_contracts_first))
+        with x.cursor() as cursor:
+            cursor.execute(fn.insert_into_cs(num_rows))
+            x.commit()
+        with x.cursor() as cursor:
+            cursor.execute(fn.insert_into_cv(num_rows, temp[0], temp[1], temp[2]))
+            x.commit()
+        with x.cursor() as cursor:
+            cursor.execute(fn.insert_into_clcr(num_rows, client_id))
+            x.commit()
+        with x.cursor() as cursor:
+            cursor.execute(fn.insert_into_crco(num_rows, client_id, emp_id, temp[0], temp[3]))
+            x.commit()
+        self.hide_all_states()
+        self.show_menu()
 
     def confirm_temp(self, func, to_save):
         temp = to_save.get().strip()
@@ -667,6 +795,13 @@ class App(ctk.CTk):
         # Вызов функции show с передачей self в качестве первого аргумента
         show(self, x, sql_request)
 
+    @staticmethod
+    def find_id(sql_request: str):
+        with x.cursor() as cursor:
+            cursor.execute(sql_request)
+            rows = cursor.fetchall()
+            return list(rows[0].values())[0]
+
     def on_closing(self, a):
         a.close()
         self.destroy()
@@ -675,3 +810,4 @@ class App(ctk.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+

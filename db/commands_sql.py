@@ -27,7 +27,7 @@ credits_command_fourth = """
         )
         SELECT cr.*, (cr.loan_amount - t.overall) as remain
         FROM credits AS cr
-        LEFT JOIN temp AS t on cr.credit_id = t.credit_id
+        JOIN temp AS t on cr.credit_id = t.credit_id
         """
 
 
@@ -67,7 +67,8 @@ clients_command_second = """
         SELECT t.client_id, t.first_name, t.last_name, sum(t.loan_amount) as total_loan
         FROM temp as t
         GROUP BY t.client_id
-        ORDER BY t.client_id"""
+        ORDER BY t.client_id
+        """
 
 
 def clients_command_third(param):
@@ -124,10 +125,12 @@ employees_command_first = """
         FROM bank_employees
         """
 employees_command_second = """
-        SELECT be.*, SUM(cc.requested_amount) AS total
-        FROM bank_employees AS be
-        LEFT JOIN credit_contracts AS cc ON be.employee_id = cc.employee_id
-        GROUP BY employee_id
+        select be.*, SUM(cr.loan_amount) AS total
+        FROM credit_contracts as cc
+        LEFT JOIN bank_employees as be on cc.employee_id = be.employee_id
+        LEFT JOIN credits as cr on cc.credit_id = cr.credit_id
+        group by be.employee_id
+        ORDER BY be.employee_id
         """
 employees_command_third = """
         SELECT be.employee_id, be.first_name AS emp_name, be.last_name AS emp_surname, cl.client_id, cl.first_name AS client_name, cl.last_name AS client_surname
@@ -151,6 +154,8 @@ def employees_command_fifth(param):
         FROM bank_employees
         WHERE (curdate() - employment_date) > {param}
         """
+
+
 # Договоры :
 credit_contracts_first = "SELECT * FROM `credit_contracts`"
 credit_contracts_second = """
@@ -185,20 +190,71 @@ credit_contracts_third = """
 
 def credit_contracts_fourth(date):
     return f"""
-            SELECT
+            SELECT 
                 cc.contract_id,
-                c.first_name AS client_first_name,
-                c.last_name AS client_last_name,
+                cl.first_name AS client_first_name,
+                cl.last_name AS client_last_name,
                 be.first_name AS employee_first_name,
                 be.last_name AS employee_last_name,
                 cc.contract_date
-            FROM credit_contracts cc
-            JOIN clients_credits clc ON cc.client_id = clc.client_id
-            JOIN clients c ON clc.client_id = c.client_id
-            JOIN bank_employees be ON cc.employee_id = be.employee_id
+            FROM credit_contracts as cc
+            JOIN bank_employees as be ON cc.employee_id = be.employee_id
+            JOIN clients as cl on cc.client_id = cl.client_id
             WHERE cc.contract_date > '{date}';
             """
 
+
+def receive_client_id(full_name):
+    name = full_name.split()[0]
+    surname = full_name.split()[1]
+    return f"""
+            select client_id
+            from clients
+            where first_name = '{name}' and last_name = '{surname}'
+            """
+
+
+def receive_emp_id(full_name):
+    name = full_name.split()[0]
+    surname = full_name.split()[1]
+    return f"""
+            select employee_id
+            from bank_employees
+            where first_name = '{name}' and last_name = '{surname}'
+            """
+
+
+def insert_into_cs(num_rows: int):
+    num_rows = num_rows + 1
+    return f"""
+            insert into credit_statuses
+            values ({num_rows}, 0);
+            """
+
+
+def insert_into_cv(num_rows: int, loan: int, rate: int, period: int):
+    int_rate = int(rate) / 100
+    num_rows += 1
+    return f"""
+            insert into credits
+            values ({num_rows}, {int(loan) - 1000}, {int_rate}, {period});
+            """
+
+
+def insert_into_clcr(num_rows: int, client_id: int):
+    num_rows += 1
+    return f"""
+            insert into clients_credits
+            values ({num_rows}, {client_id}, {num_rows});
+            """
+
+
+def insert_into_crco(num_rows: int, client_id: int, emp_id: int, loan: int, type: int):
+    num_rows += 1
+    return f"""
+            insert into credit_contracts
+            values ({num_rows}, {loan}, curdate(), {emp_id}, {type}, {client_id}, {num_rows});
+            """
 
 
 # Платежи :
@@ -244,10 +300,9 @@ payments_command_fourth = """SELECT
     JOIN
         clients cl ON cc.client_id = cl.client_id;
     """
-payments_command_fifth = "SELECT * FROM `payments`"
 
 
-def payments_command_sixth(name):
+def payments_command_fifth(name):
     first_name = name.split()[0]
     last_name = name.split()[1]
     return f"""
